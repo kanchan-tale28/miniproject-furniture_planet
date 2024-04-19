@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> cart-Furniture planet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+</head>
+<body>
+
+
+    
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/furniture_planet__3_-removebg-preview.png" width="250px">
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li> <a href="indexx.html">Home</a></li>
+                    <li> <a href="products.html">Products</a></li>
+                    <li> <a href="">About</a></li>
+                    <li> <a href="">Contact</a></li>
+                    <li> <a href="">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="images/cart-removebg-preview.png" width="30px" height="30px"></a>
+            <img src="images/menu.png" class="menu-icon"
+             onclick="menutoggle()">
+        </div>
+        
+   </div>
+
+   <!---------account-page--------->
+   <div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/100.png" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span onclick="login()">Login</span>
+                        <span onclick="register()">Register</span>
+                        <hr id="Indicator">
+                    </div>
+                    <form id="LoginForm">
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <button type="submit" class="btn">Login</button>
+                        <a href="">Forgot password</a>
+                    </form>
+
+                    <form id="RegForm">
+                        <input type="text" placeholder="Username">
+                        <input type="email" placeholder="Email">
+                        <input type="password" placeholder="Password">
+                        <button type="submit" class="btn">Register</button>
+                       
+                    </form>
+
+                </div>
+        </div>
+    </div>
+   </div>
+
+
+<!------footer-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download our app</h3>
+                <p>Download the app for android and ios mobile phone</p>
+                <img src="images/google-play-badge.png" width="150">
+                <img src="images/app-store-badge.png" width="150">
+            </div>
+            <div class="footer-col-2">
+                <img src="images/furniture planet (5).png" width="150" height="130">
+                <p>our purpose is to sell furniture which fuilfill your dreams of customising your own home and get the pleasure</p>
+                <div class="app-logo">
+                    
+                </div>
+            </div>
+            <div class="footer-col-3">
+                <h3>useful links</h3>
+                <ul>
+                    <li>coupons</li>
+                    <li>Blog</li>
+                    <li>Return policy</li>
+                    <li>join affiliate</li>
+                </ul>
+
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow us</h3>
+                <ul>
+                    <li>Instagram</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>youtube</li>
+                </ul>
+
+            </div>
+        </div>
+        <hr> <p class="copyright"> copyright 2024 - kanchan web page</p>
+            
+    </div>
+</div>
+<!---------js for toggle menu------>
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px")
+            {
+          
+               MenuItems.style.maxHeight = "200px"
+            }
+        else
+            {
+
+                MenuItems.style.maxHeight = "0px"
+            }
+    }
+</script>
+
+<!---------js for toggle form------->
+<script>
+    var LoginForm = document.getElementById("LoginForm")
+    var RegForm = document.getElementById("RegForm")
+    var Indicator = document.getElementById("Indicator")
+
+    function register(){
+        RegForm.style.transform = "translatex(0px)";
+        LoginForm.style.transform = "translatex(0px)";
+        Indicator.style.transform = "translatex(100px)"
+    }
+    function login(){
+        RegForm.style.transform = "translatex(300px)";
+        LoginForm.style.transform = "translatex(300px)";
+        Indicator.style.transform = "translatex(0px)"
+    }
+</script>
+
+
+
+</body>
+</html>
