@@ -31,7 +31,25 @@ nav ul{
 nav ul li{
     display: inline-block;
     margin-right: 20px;
+    padding: 0px 10px;
+    font-weight: 400;
     
+    
+}
+.search-box .search{
+    padding: 12px 8px;
+    border-radius: 50px;
+    font-size: 16px;
+
+   }
+   .search-box .search i{
+    clear: #ffffff;
+    position: relative;
+    right: 50px;
+    top: 2px;
+    background-color: #0b910b;
+    padding: 12px;
+    border-radius: 50px;
 }
 a{
     text-decoration: none;
