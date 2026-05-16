@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers & E-Advertising – Furniture Planet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        :root {
+            --brand: #ff523b;
+            --brand2: #e03d28;
+            --dark: #1a1a2e;
+            --teal: #5e8f94;
+        }
+
+        /* ── Promotional Banner (E-Advertising) ── */
+        .promo-ticker {
+            background: var(--brand);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker 18s linear infinite;
+        }
+        @keyframes ticker {
+            0%   { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ── Hero Ad Banner ── */
+        .hero-ad {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 60px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-ad::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,82,59,0.2)"/><circle cx="80" cy="80" r="3" fill="rgba(255,82,59,0.15)"/><circle cx="60" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+        }
+        .hero-ad .badge {
+            display: inline-block;
+            background: var(--brand);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .hero-ad h1 {
+            font-size: clamp(28px, 5vw, 52px);
+            color: #fff;
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+            margin-bottom: 14px;
+        }
+        .hero-ad h1 span { color: var(--brand); }
+        .hero-ad p {
+            color: #aaa;
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto 26px;
+            position: relative;
+        }
+        .hero-ad .cta-group {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .cta-primary {
+            padding: 13px 32px;
+            background: var(--brand);
+            color: #fff;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .cta-primary:hover { background: var(--brand2); transform: translateY(-2px); color: #fff; }
+        .cta-secondary {
+            padding: 13px 32px;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .cta-secondary:hover { background: #fff; color: #222; }
+
+        /* ── Section Wrapper ── */
+        .ad-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 25px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-header .tag {
+            display: inline-block;
+            background: #fff0ee;
+            color: var(--brand);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .section-header h2 { font-size: 26px; color: #222; font-weight: 700; }
+        .section-header p  { color: #888; font-size: 14px; margin-top: 8px; }
+
+        /* ── Market Segmentation Cards ── */
+        .segment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .segment-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.07);
+            border-top: 4px solid transparent;
+            transition: transform .3s, box-shadow .3s;
+            text-align: center;
+        }
+        .segment-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+        .segment-card:nth-child(1) { border-top-color: #e74c3c; }
+        .segment-card:nth-child(2) { border-top-color: #3498db; }
+        .segment-card:nth-child(3) { border-top-color: #27ae60; }
+        .segment-card:nth-child(4) { border-top-color: #f39c12; }
+        .segment-card .icon { font-size: 36px; margin-bottom: 12px; }
+        .segment-card h4 { font-size: 15px; color: #222; margin-bottom: 8px; }
+        .segment-card p  { font-size: 12px; color: #777; line-height: 1.6; }
+        .segment-card .target {
+            display: inline-block;
+            background: #f8f8f8;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* ── Email Marketing Section ── */
+        .email-section {
+            background: linear-gradient(135deg, #fff8f7, #fff);
+            border-radius: 20px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 4px 24px rgba(255,82,59,.1);
+            border: 1px solid #ffe8e4;
+        }
+        @media(max-width:700px){ .email-section{ grid-template-columns:1fr; } }
+        .email-section h3 { font-size: 22px; color: #222; font-weight: 700; margin-bottom: 12px; }
+        .email-section p  { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 20px; }
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .email-form input {
+            padding: 13px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .email-form input:focus { border-color: var(--brand); outline: none; }
+        .email-form select {
+            padding: 13px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            color: #555;
+        }
+        .email-form button {
+            padding: 13px;
+            background: var(--brand);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .3s;
+        }
+        .email-form button:hover { background: var(--brand2); }
+        .email-benefits { margin-top: 16px; }
+        .email-benefit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #555;
+        }
+        .email-benefit i { color: var(--brand); }
+
+        /* ── E-Branding Section ── */
+        .branding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .brand-pillar {
+            background: #fff;
+            border-radius: 14px;
+            padding: 26px;
+            box-shadow: 0 4px 20px rgba(0,0,0,.07);
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-pillar::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 80px; height: 80px;
+            border-radius: 0 14px 0 100%;
+            opacity: .1;
+        }
+        .brand-pillar:nth-child(1)::before { background: #e74c3c; }
+        .brand-pillar:nth-child(2)::before { background: #3498db; }
+        .brand-pillar:nth-child(3)::before { background: #27ae60; }
+        .brand-pillar .num {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+        .brand-pillar h4 { font-size: 15px; color: #222; margin-bottom: 8px; }
+        .brand-pillar p  { font-size: 12px; color: #777; line-height: 1.7; }
+
+        /* ── Internet Marketing Trends ── */
+        .trends-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .trend-item {
+            flex: 1;
+            min-width: 180px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+            text-align: center;
+            transition: transform .3s;
+        }
+        .trend-item:hover { transform: translateY(-4px); }
+        .trend-item .pct {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brand);
+        }
+        .trend-item h5 { font-size: 13px; color: #444; margin: 6px 0 4px; }
+        .trend-item p  { font-size: 11px; color: #999; }
+
+        /* ── Ethical / Legal Frameworks ── */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media(max-width:600px){ .ethics-grid{ grid-template-columns:1fr; } }
+        .ethics-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+            border-left: 4px solid;
+        }
+        .ethics-card:nth-child(1) { border-left-color: #8e44ad; }
+        .ethics-card:nth-child(2) { border-left-color: #e67e22; }
+        .ethics-card:nth-child(3) { border-left-color: #2980b9; }
+        .ethics-card:nth-child(4) { border-left-color: #16a085; }
+        .ethics-card h5 { font-size: 14px; color: #222; margin-bottom: 8px; }
+        .ethics-card p  { font-size: 12px; color: #666; line-height: 1.7; }
+
+        /* ── LinkedIn Case Study ── */
+        .case-study {
+            background: linear-gradient(135deg, #0077b5, #00a0dc);
+            border-radius: 16px;
+            padding: 36px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .case-study::after {
+            content: 'in';
+            position: absolute;
+            right: 30px; top: 30px;
+            font-size: 80px;
+            font-weight: 900;
+            opacity: .15;
+        }
+        .case-study .cs-tag {
+            display: inline-block;
+            background: rgba(255,255,255,.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+        .case-study h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .case-study p  { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.8; margin-bottom: 16px; }
+        .cs-stats {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .cs-stat h4 { font-size: 26px; font-weight: 700; color: #fff; }
+        .cs-stat p  { font-size: 11px; color: rgba(255,255,255,.7); margin: 0; }
+
+        /* ── Ad Banner Display area ── */
+        .display-ads {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media(max-width:700px){ .display-ads{ grid-template-columns:1fr; } }
+        .ad-banner {
+            border-radius: 14px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ad-banner-1 { background: linear-gradient(135deg, #ff523b, #ff8c00); }
+        .ad-banner-2 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+        .ad-banner h4 { font-size: 20px; color: #fff; font-weight: 700; }
+        .ad-banner p  { font-size: 13px; color: rgba(255,255,255,.8); margin: 8px 0; }
+        .ad-banner .ad-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            width: fit-content;
+        }
+        .ad-banner-1 .ad-btn { background: #fff; color: var(--brand); }
+        .ad-banner-2 .ad-btn { background: var(--brand); color: #fff; }
+        .ad-tag {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: rgba(255,255,255,.2);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        /* ── Separator ── */
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            margin: 0;
+        }
+
+        /* ── Online Research Section ── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .research-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,.06);
+            border-bottom: 3px solid var(--brand);
+        }
+        .research-card .icon { font-size: 32px; margin-bottom: 10px; }
+        .research-card h5 { font-size: 14px; color: #333; margin-bottom: 6px; }
+        .research-card p  { font-size: 12px; color: #777; line-height: 1.5; }
+
+        /* Pop-up style notification */
+        .popup-ad {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,.2);
+            max-width: 280px;
+            z-index: 999;
+            border-left: 4px solid var(--brand);
+            animation: slideIn .5s ease-out;
+            display: none;
+        }
+        .popup-ad.show { display: block; }
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to   { transform: translateX(0);     opacity: 1; }
+        }
+        .popup-ad h5 { font-size: 14px; color: #222; margin-bottom: 6px; }
+        .popup-ad p  { font-size: 12px; color: #666; margin: 0 0 12px; }
+        .popup-ad .close-btn {
+            position: absolute; top: 10px; right: 14px;
+            cursor: pointer; font-size: 18px; color: #aaa;
+        }
+        .popup-ad .popup-cta {
+            display: inline-block;
+            padding: 8px 18px;
+            background: var(--brand);
+            color: #fff;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<div class="container">
+    <div class="navbar">
+        <div class="logo">
+            <img src="images/furniture planet (5).png" width="150px">
+        </div>
+        <nav>
+            <ul id="MenuItems">
+                <li><a href="indexx.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="accounts.html">Account</a></li>
+            </ul>
+        </nav>
+        <a href="cart.html"> 
+            <img src="images/cart-removebg-preview.png" width="30px" height="30px">
+        </a>
+        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+    </div>
+</div>
+
+<!-- ── Ticker (E-Advertising concept) ── -->
+<div class="promo-ticker">
+    <span class="ticker-inner">
+        🎉 GRAND SALE – Up to 40% OFF on all sofas &nbsp;|&nbsp;
+        🚚 FREE Delivery on orders above ₹50,000 &nbsp;|&nbsp;
+        💳 Extra 10% cashback on Credit Card payments &nbsp;|&nbsp;
+        📱 Download our app for exclusive mobile-only deals &nbsp;|&nbsp;
+        🌟 New Arrivals: Premium Velvet Collection 2024
+    </span>
+</div>
+
+<!-- ── Hero Ad Banner ── -->
+<div class="hero-ad">
+    <div class="badge">🏷️ LIMITED TIME OFFER</div>
+    <h1>Furnish Your Dream Home<br><span>Save Up To 40% Today</span></h1>
+    <p>Exclusive online-only deals on premium furniture. Our biggest sale of the year — crafted just for you.</p>
+    <div class="cta-group">
+        <a href="products.html" class="cta-primary">Shop Now →</a>
+        <a href="#email-marketing" class="cta-secondary">Get Exclusive Deals</a>
+    </div>
+</div>
+
+<!-- ── Display Ads ── -->
+<div class="ad-section" style="padding-bottom:10px;">
+    
+    <div class="display-ads">
+        <div class="ad-banner ad-banner-1">
+            <span class="ad-tag">Sponsored</span>
+            <div>
+                <h4>Sofa Sale – Ends Sunday!</h4>
+                <p>Premium velvet & wooden sofas at unbeatable prices. EMI available at 0% interest.</p>
+            </div>
+            <a href="products.html" class="ad-btn">View Offers</a>
+        </div>
+        <div class="ad-banner ad-banner-2">
+            <span class="ad-tag">Retargeting</span>
+            <div>
+                <h4>You Left Items in Cart</h4>
+                <p>Complete your purchase. Items selling fast!</p>
+            </div>
+            <a href="cart.html" class="ad-btn">Go to Cart</a>
+        </div>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+
+
+<!-- ── Email Marketing Section ── -->
+<div class="ad-section" id="email-marketing">
+    <div class="section-header">
+        
+        <h2>Subscribe for Exclusive Deals</h2>
+        <p>Email marketing delivers the highest ROI of any digital channel. Join 50,000+ subscribers for personalised offers.</p>
+    </div>
+    <div class="email-section">
+        <div>
+            <h3>Get Personalised Furniture Deals in Your Inbox</h3>
+            <p>Email marketing allows us to deliver the right offer to the right customer at the right time. Our campaigns are segmented by your preferences, purchase history, and wishlist items — ensuring every email is relevant to you.</p>
+            <div class="email-benefits">
+                <div class="email-benefit"><i class="fa fa-tag"></i> Exclusive subscriber-only discount codes</div>
+                <div class="email-benefit"><i class="fa fa-bell"></i> New arrival alerts before public launch</div>
+                <div class="email-benefit"><i class="fa fa-star"></i> Personalised product recommendations</div>
+                <div class="email-benefit"><i class="fa fa-gift"></i> Birthday & anniversary special offers</div>
+                <div class="email-benefit"><i class="fa fa-check"></i> No spam – unsubscribe anytime (CAN-SPAM compliant)</div>
+            </div>
+        </div>
+        <div class="email-form">
+            <input type="text" placeholder="Your Full Name">
+            <input type="email" placeholder="Your Email Address">
+            <select>
+                <option>Choose Frequency</option>
+                <option>Daily Digest</option>
+                <option>Weekly Highlights</option>
+                <option>Monthly Newsletter</option>
+                <option>Sale Alerts Only</option>
+            </select>
+            <select>
+                <option>Furniture Category Interest</option>
+                <option>Living Room</option>
+                <option>Bedroom</option>
+                <option>Dining Room</option>
+                <option>Office Furniture</option>
+                <option>All Categories</option>
+            </select>
+            <button onclick="alert('Thank you for subscribing! Check your inbox for a welcome offer.')">
+                <i class="fa fa-envelope"></i> Subscribe Now – It's Free!
+            </button>
+            <p style="font-size:11px;color:#aaa;text-align:center;margin:0;">
+                🔒 Your data is safe. We follow GDPR & IT Act 2000 privacy standards. No spam, ever.
+            </p>
+        </div>
+    </div>
+</div>
+
+<hr class="section-divider">
+
+
+
+
+<!-- ── Footer ── -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download our app</h3>
+                <p>Download the app for android and ios mobile phone</p>
+                <img src="images/google-play-badge.png" width="100">
+                <img src="images/app-store-badge.png" width="150">
+            </div>
+            <div class="footer-col-2">
+                <img src="images/furniture_planet.png" width="150" height="130">
+                <p>Our purpose is to sell furniture which fulfills your dreams of customising your home.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul><li>Coupons</li><li>Blog</li><li>Return Policy</li><li>Join Affiliate</li></ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul><li>Instagram</li><li>Facebook</li><li>Twitter</li><li>YouTube</li></ul>
+            </div>
+        </div>
+        <hr><p class="copyright">Copyright 2024 – Furniture Planet</p>
+    </div>
+</div>
+
+<!-- ── Popup Ad (E-Advertising demo) ── -->
+<div class="popup-ad" id="popupAd">
+    <span class="close-btn" onclick="document.getElementById('popupAd').style.display='none'">×</span>
+    <h5>🎉 Special Offer Just for You!</h5>
+    <p>Use code <strong>PLANET10</strong> for an extra 10% off on your first order today only!</p>
+    <a href="products.html" class="popup-cta">Shop Now</a>
+</div>
+
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle(){
+        MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
+    }
+
+    // Show popup ad after 3 seconds (E-Advertising demo)
+    setTimeout(() => {
+        document.getElementById('popupAd').classList.add('show');
+        document.getElementById('popupAd').style.display = 'block';
+    }, 3000);
+</script>
+</body>
+</html>

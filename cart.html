@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Furniture Planet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/furniture planet (5).png" width="150px">
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="indexx.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="accounts.html">Account</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html">
+                <img src="images/cart-removebg-preview.png" width="30px" height="30px">
+            </a>
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    <div class="small-container cart-page">
+        <h2>Your Shopping Cart</h2>
+
+        <table id="cartTable">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+        <div class="total-price">
+            <table>
+                <tr><td>Subtotal</td><td id="subtotal">₹0</td></tr>
+                <tr><td>Tax (18%)</td><td id="tax">₹0</td></tr>
+                <tr><td><strong>Total</strong></td><td id="grandTotal">₹0</td></tr>
+            </table>
+        </div>
+
+        <a href="payment.html" class="btn">Proceed to Checkout</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download our app</h3>
+                    <p>Download the app for android and ios mobile phone</p>
+                    <img src="images/google-play-badge.png" width="100">
+                    <img src="images/app-store-badge.png" width="150">
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/furniture planet (5).png" width="150" height="130">
+                    <p>our purpose is to sell furniture which fuilfill your dreams of customising your own home</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>useful links</h3>
+                    <ul>
+                        <li>coupons</li>
+                        <li>Blog</li>
+                        <li>Return policy</li>
+                        <li>join affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr> 
+            <p class="copyright">copyright 2024 - kanchan web page</p>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+
+        // Render Dynamic Cart
+        function renderCart() {
+            const cartItems = getCart();
+            const table = document.getElementById('cartTable');
+            
+            // Clear old rows except header
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            let subtotal = 0;
+
+            if (cartItems.length === 0) {
+                const row = table.insertRow();
+                row.innerHTML = `<td colspan="4" style="text-align:center;padding:40px;color:#888;">Your cart is empty</td>`;
+                updateTotals(0);
+                return;
+            }
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>
+                        <div class="cart-info">
+                            <img src="${item.image}" width="80px" height="80px">
+                            <div>
+                                <p>${item.name}</p>
+                                <small>₹${item.price}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="number" value="${item.quantity}" min="1" 
+                               style="width:60px;text-align:center;" 
+                               onchange="updateQty('${item.id}', this.value)">
+                    </td>
+                    <td>₹${itemTotal}</td>
+                    <td>
+                        <a href="#" onclick="removeItem('${item.id}'); return false;" style="color:#ff523b;">Remove</a>
+                    </td>
+                `;
+            });
+
+            updateTotals(subtotal);
+        }
+
+        function updateQty(id, qty) {
+            let cart = getCart();
+            const item = cart.find(i => i.id === id);
+            if (item) item.quantity = parseInt(qty) || 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Fixed Remove Function
+        function removeItem(id) {
+            removeFromCart(id);     // from cart.js
+            renderCart();           // refresh the table
+        }
+
+        function updateTotals(subtotal) {
+            const tax = Math.round(subtotal * 0.18);
+            const grandTotal = subtotal + tax;
+            document.getElementById('subtotal').textContent = `₹${subtotal}`;
+            document.getElementById('tax').textContent = `₹${tax}`;
+            document.getElementById('grandTotal').textContent = `₹${grandTotal}`;
+        }
+
+        // Load cart when page opens
+        window.onload = renderCart;
+    </script>
+
+</body>
+</html>
